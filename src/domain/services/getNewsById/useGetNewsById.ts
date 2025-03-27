@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export default class useGetNews {
-    async getAllNews() {
+export default class useGetNewsById {
+    async getNewsById(id: number) {
         const response = await axios.get(
-            `${import.meta.env.VITE_API_URL}/News?select=*`,
+            `${import.meta.env.VITE_API_URL}/News?select=*&id=eq.${id}`,
             {
                 headers: {
                     apikey: import.meta.env.VITE_API_KEY,
