@@ -1,7 +1,4 @@
-// https://rnbqqqvctvbsdpmhtdex.supabase.co/rest/v1/News?select=*
-
 import axios from "axios";
-
 
 export default class useGetNews {
     async getAllNews() {
@@ -15,7 +12,6 @@ export default class useGetNews {
                 },
             }
         );
-        console.log(response)
         return response.data;
     }
 }
