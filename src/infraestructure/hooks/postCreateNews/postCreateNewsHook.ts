@@ -9,7 +9,6 @@ const postCreateNewsHook = () => {
 
     const service = new usePostCreateNews();
 
-
     const fetchCreatedNews = async (newsCreated: NewNews) => {
         try {
             setIsLoading(true);

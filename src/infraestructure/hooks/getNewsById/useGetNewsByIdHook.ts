@@ -3,7 +3,7 @@ import { News } from "../../../domain/api/entities/types";
 import useGetNewsById from "../../../domain/services/getNewsById/useGetNewsById";
 
 const useGetNewsByIdHook = (id: number) => {
-    const [data, setData] = useState<News>();
+    const [data, setData] = useState<News[]>();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
