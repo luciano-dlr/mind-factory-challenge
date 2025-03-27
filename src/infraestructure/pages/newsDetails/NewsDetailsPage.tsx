@@ -1,14 +1,16 @@
-import { useParams } from "react-router"
+import { data, useParams } from "react-router"
 import useGetNewsByIdHook from "../../hooks/getNewsById/useGetNewsByIdHook"
 import { NavBar } from "../../components/navBar/NavBar"
 
 export const NewsDetailsPage = () => {
 
     const { id } = useParams<{ id: string }>()
-    const { dataNewsById = [], isLoadingGetNewsById, errorGetNewsById } = useGetNewsByIdHook(Number(id))
+    const { dataNewsById, isLoadingGetNewsById, errorGetNewsById } = useGetNewsByIdHook(Number(id))
 
     if (isLoadingGetNewsById) return <h2>Cargando noticia...</h2>
     if (errorGetNewsById) return <h2>Error: {errorGetNewsById}</h2>
+
+
 
     return (
         <>
