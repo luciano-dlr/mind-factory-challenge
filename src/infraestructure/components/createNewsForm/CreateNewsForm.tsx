@@ -3,7 +3,8 @@ import * as Yup from "yup";
 import postCreateNewsHook from "../../hooks/postCreateNews/postCreateNewsHook";
 
 interface FormValues {
-    urlImg: string;
+    id?: number;
+    image: string;
     author: string;
     title: string;
     subtitle: string;
@@ -11,16 +12,22 @@ interface FormValues {
     category: string;
 }
 
+
+
 interface CreateNewsFormProps {
     onClose: () => void;
+    newsData?: FormValues;
+    isEditMode: boolean;
 }
 
-export const CreateNewsForm = ({ onClose }: CreateNewsFormProps) => {
+export const CreateNewsForm = ({ onClose, newsData, isEditMode }: CreateNewsFormProps) => {
+
     const { dataNewsCreated, isLoadingCreatedNews, errorCreatedNews, fetchCreatedNews } = postCreateNewsHook();
 
+
     const formik = useFormik<FormValues>({
-        initialValues: {
-            urlImg: "",
+        initialValues: newsData || {
+            image: "",
             author: "",
             title: "",
             subtitle: "",
@@ -28,7 +35,7 @@ export const CreateNewsForm = ({ onClose }: CreateNewsFormProps) => {
             category: "",
         },
         validationSchema: Yup.object({
-            urlImg: Yup.string().max(500, "Máximo 500 caracteres").required("Requerido"),
+            image: Yup.string().max(500, "Máximo 500 caracteres").required("Requerido"),
             author: Yup.string().max(15, "Máximo 15 caracteres").required("Requerido"),
             title: Yup.string().max(25, "Máximo 25 caracteres").required("Requerido"),
             subtitle: Yup.string().max(20, "Máximo 20 caracteres").required("Requerido"),
@@ -39,7 +46,7 @@ export const CreateNewsForm = ({ onClose }: CreateNewsFormProps) => {
             await fetchCreatedNews({
                 title: values.title,
                 subtitle: values.subtitle,
-                image: values.urlImg,
+                image: values.image,
                 description: values.description,
                 author: values.author,
                 category: values.category,
@@ -57,18 +64,18 @@ export const CreateNewsForm = ({ onClose }: CreateNewsFormProps) => {
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
                 <h1 className="text-xl font-semibold text-center mb-4">Nueva Noticia</h1>
                 <form className="flex flex-col" onSubmit={formik.handleSubmit} noValidate>
-                    <label htmlFor="urlImg" className="text-sm font-medium">Url de la Imagen</label>
+                    <label htmlFor="image" className="text-sm font-medium">Url de la Imagen</label>
                     <input
                         type="text"
-                        id="urlImg"
-                        name="urlImg"
+                        id="image"
+                        name="image"
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
-                        value={formik.values.urlImg}
+                        value={formik.values.image}
                         className="border rounded p-2 w-full mb-2 focus:ring-2 focus:ring-blue-500"
                     />
-                    {formik.touched.urlImg && formik.errors.urlImg && (
-                        <span className="text-red-500 text-xs">{formik.errors.urlImg}</span>
+                    {formik.touched.image && formik.errors.image && (
+                        <span className="text-red-500 text-xs">{formik.errors.image}</span>
                     )}
 
                     <label htmlFor="author" className="text-sm font-medium mt-2">Autor</label>
