@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import useGetNews from "../../../domain/services/getNews/useGetNews";
-import { News } from "../../../domain/api/entities/types";
+import { useNewsStore } from "../../zustand/NewsStore";
 
-const useGetAllNewsHook = () => {
-    const [data, setData] = useState<News[]>([]);
+const useGetAllNews = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const { news, setNews } = useNewsStore();
 
     const service = new useGetNews();
 
@@ -15,7 +15,7 @@ const useGetAllNewsHook = () => {
                 setIsLoading(true);
                 setError(null);
                 const response = await service.getAllNews();
-                setData(response);
+                setNews(response);
             } catch (error: any) {
                 const errorMessage =
                     error.response?.data?.message || "Ha ocurrido un error.";
@@ -24,15 +24,14 @@ const useGetAllNewsHook = () => {
                 setIsLoading(false);
             }
         };
-
         fetchNews();
-    }, []);
+    }, [setNews]);
 
     return {
-        dataNews: data,
+        dataNews: news,
         isLoadingGetNews: isLoading,
         errorGetNews: error,
     };
 };
 
-export default useGetAllNewsHook;
+export default useGetAllNews;
