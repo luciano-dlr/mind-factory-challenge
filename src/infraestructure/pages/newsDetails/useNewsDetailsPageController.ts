@@ -10,13 +10,9 @@ export const useNewsDetailsPageController = () => {
     const { news, isLoading, error } = useNewsDetails(newsId);
     const { deleteNews, isLoading: isDeleting, error: deleteError } = useDeleteNews();
     const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const [showEditModal, setShowEditModal] = useState(false);
 
     const handleDeleteClick = () => {
         setShowConfirmModal(true);
-    };
-    const handleEditClick = () => {
-        setShowEditModal(true);
     };
 
     const handleConfirmDelete = async () => {
@@ -35,16 +31,12 @@ export const useNewsDetailsPageController = () => {
 
     return {
         news,
-        isLoading: isLoading || isDeleting,
-        error: error || deleteError,
+        isLoading,
+        error,
         newsId,
         showConfirmModal,
-        handleDeleteClick,
         handleConfirmDelete,
         handleCancelDelete,
-        handleEditClick,
-        showEditModal,
-        setShowEditModal,
-        showActions: !!news
+        handleDeleteClick,
     };
 };

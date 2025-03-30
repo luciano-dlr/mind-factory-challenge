@@ -4,7 +4,7 @@ import { Layout } from "../../layout/Layout"
 import { useHomePageController } from "./useHomePageController"
 
 export const HomePage = () => {
-    const { dataNews, isLoadingGetNews, errorGetNews, navigate } = useHomePageController()
+    const { dataNews, isLoadingGetNews, errorGetNews, navigate, mainNews, sideNews, bottomNews } = useHomePageController()
 
     if (isLoadingGetNews)
         return (
@@ -25,9 +25,6 @@ export const HomePage = () => {
         )
     }
 
-    const mainNews = dataNews[0]
-    const sideNews = dataNews.slice(1, 4)
-    const bottomNews = dataNews.slice(4)
 
     return (
         <Layout>

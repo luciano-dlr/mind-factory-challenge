@@ -1,6 +1,5 @@
 import { CustomModal } from "../../components/customModal/CustomModal";
 import { useNewsDetailsPageController } from "./useNewsDetailsPageController";
-import { NavBar } from "../../components/navBar/NavBar";
 import { Layout } from "../../layout/Layout";
 
 export const NewsDetailsPage = () => {
@@ -14,8 +13,6 @@ export const NewsDetailsPage = () => {
         handleConfirmDelete,
         handleCancelDelete,
         handleDeleteClick,
-        showEditModal,
-        setShowEditModal
     } = useNewsDetailsPageController();
 
     if (isLoading) return <h2>Cargando noticia...</h2>;
