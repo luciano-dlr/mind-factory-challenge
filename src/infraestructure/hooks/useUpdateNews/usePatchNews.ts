@@ -3,8 +3,7 @@ import PatchNewsService, { UpdateNews } from "../../../domain/services/updateNew
 import { useNewsStore } from "../../zustand/NewsStore";
 
 const usePatchNews = (id: number) => {
-    //TODO, typar data update feature  - hook in progress
-    const [data, setData] = useState<any | null>(null);
+    const [data, setData] = useState<UpdateNews | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const { updateNews } = useNewsStore();
@@ -16,12 +15,13 @@ const usePatchNews = (id: number) => {
             setIsLoading(true);
             setError(null);
             await service.updateNews(updatedValues, id);
-            // setData(response);
             setData({ ...updatedValues, id });
             updateNews(id, updatedValues);
+            return true
         } catch (error: any) {
             const errorMessage = error.response?.data?.message || "Ha ocurrido un error.";
             setError(errorMessage);
+            return false
         } finally {
             setIsLoading(false);
         }
