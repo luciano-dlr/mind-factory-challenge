@@ -1,52 +1,71 @@
+import { useEffect } from "react";
 
-
-interface CustomModalProps {
-    visible: boolean;
-    title?: string;
+interface AlertModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    title: string;
     message: string;
-    onAccept?: () => void;
-    onReject?: () => void;
-    acceptText?: string;
-    rejectText?: string;
+    type?: 'confirm' | 'info' | 'success' | 'error';
+    onConfirm?: () => void;
+    confirmText?: string;
+    cancelText?: string;
 }
 
-const CustomModal = ({
-    visible,
-    title = "Confirmación",
+export const CustomModal = ({
+    isOpen,
+    onClose,
+    title,
     message,
-    onAccept,
-    onReject,
-    acceptText = "Aceptar",
-    rejectText = "Cancelar",
-}: CustomModalProps) => {
-    if (!visible) return null;
+    type = 'info',
+    onConfirm,
+    confirmText = 'Confirmar',
+    cancelText = 'Cancelar'
+}: AlertModalProps) => {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isOpen]);
+
+    if (!isOpen) return null;
+
+
+    const colorClasses = {
+        confirm: 'bg-blue-600',
+        info: 'bg-blue-600',
+        success: 'bg-green-600',
+        error: 'bg-red-600'
+    };
 
     return (
-        <>
-            <div className="fixed inset-0 flex items-center justify-center bg-[#f6f3f480] bg-opacity-50">
-                <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
-                    <h2 className="text-lg font-bold mb-4">{title}</h2>
-                    <p className="mb-4">{message}</p>
-                    <div className="flex justify-end space-x-2">
-                        {onReject && (
-                            <button className="px-4 py-2 bg-gray-300 rounded" onClick={onReject}>
-                                {rejectText}
-                            </button>
-                        )}
-                        {onAccept && (
-                            <button className="px-4 py-2 bg-blue-600 text-white rounded" onClick={onAccept}>
-                                {acceptText}
-                            </button>
-                        )}
-                    </div>
+        <div className="fixed inset-0 bg-[#f6f3f480] bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+                <h3 className={`text-xl font-bold mb-4 ${colorClasses[type]} text-white p-3 rounded-t-lg -m-6 mb-4`}>
+                    {title}
+                </h3>
+                <p className="mb-6">{message}</p>
+                <div className="flex justify-end gap-3">
+                    {type === 'confirm' && (
+                        <button
+                            onClick={onClose}
+                            className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
+                        >
+                            {cancelText}
+                        </button>
+                    )}
+                    <button
+                        onClick={type === 'confirm' ? onConfirm : onClose}
+                        className={`px-4 py-2 ${colorClasses[type]} text-white rounded hover:opacity-90`}
+                    >
+                        {type === 'confirm' ? confirmText : 'Aceptar'}
+                    </button>
                 </div>
-            </div>,
-
-
-        </>
-    )
-
-
+            </div>
+        </div>
+    );
 };
-
-export default CustomModal;
