@@ -34,33 +34,28 @@ export const FormPreview = ({
     const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [commonData, setCommonData] = useState<CommonDataFormValues>({
-        title: "",
-        subtitle: "",
-        image: "",
-        author: "",
-        category: ""
+        title: getter?.title || "",
+        subtitle: getter?.subtitle || "",
+        image: getter?.image || "",
+        author: getter?.author || "",
+        category: getter?.category || ""
     });
-    const [descriptionData, setDescriptionData] = useState<{ description: string }>({ description: "" });
+    const [descriptionData, setDescriptionData] = useState<{ description: string }>({ description: getter?.description || "" });
     const [formCommonValid, setFormCommonValid] = useState<boolean>(false)
     const [formDescriptionValid, setFormDescriptionValid] = useState<boolean>(false)
 
     const saveNews = () => {
-        console.log('hola joa y leio');
-        console.log('soy despcription data', descriptionData.description);
-
-        setter((prevState: NewData) => {
-
-            console.log('soy prevstate', prevState);
-
-
-            return {
-                ...prevState,
-                description: descriptionData?.description ?? prevState.description
-            }
-        })
-
-        setOpenConfrimationModal(true)
-    }
+        setter((prevState: NewData) => ({
+            ...prevState,
+            title: commonData.title,
+            subtitle: commonData.subtitle,
+            image: commonData.image,
+            author: commonData.author,
+            category: commonData.category,
+            description: descriptionData.description ?? prevState.description
+        }));
+        setOpenConfrimationModal(true);
+    };
 
     const handleCancel = () => {
         setOpenConfrimationModal(false)
@@ -68,11 +63,8 @@ export const FormPreview = ({
 
 
     const nextPrevStep = () => {
-
         if (!swiper) return
-
         if (activeIndex === 0) {
-
             setter((prevState: NewData) => ({
                 ...prevState,
                 title: commonData?.title,
@@ -82,9 +74,7 @@ export const FormPreview = ({
                 category: commonData?.category,
             }))
             swiper.slideNext()
-
         } else {
-
             swiper.slidePrev()
         }
     }
@@ -180,8 +170,8 @@ export const FormPreview = ({
                     isOpen={openConfrimationModal}
                     onClose={handleCancel}
                     onConfirm={handlerSubmit}
-                    title="Confirmar Eliminación"
-                    message="¿Estás seguro de que deseas eliminar esta noticia? Esta acción no se puede deshacer."
+                    title="Confirmar"
+                    message="¿Estás seguro de que deseas Confirmar"
                     type="confirm"
                 />
             )
