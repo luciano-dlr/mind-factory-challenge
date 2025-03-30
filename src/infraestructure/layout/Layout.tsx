@@ -1,13 +1,16 @@
-import { PropsWithChildren } from "react"
-import { NavBar } from "../components/navBar/NavBar"
-import { Outlet, useLocation } from "react-router"
+import { NavBar } from "../components/navBar/NavBar";
 
-export const Layout = () => {
-  // const { pathname } = useLocation()
-  return (
-    <main>
-      <NavBar />
-      <Outlet />
-    </main>
-  )
+export interface LayoutProps {
+    children: React.ReactNode;
+    onDelete?: () => void;
 }
+
+export const Layout = ({ children, onDelete }: LayoutProps) => {
+
+    return (
+        <main>
+            <NavBar onDelete={onDelete} />
+            {children}
+        </main>
+    );
+};

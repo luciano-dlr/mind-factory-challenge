@@ -1,23 +1,26 @@
-import type { News } from "../../../domain/api/entities/types"
+import type { News } from "../../../domain/api/entities/types";
 
 interface NewsCardProps {
-    news: News
+    news: News;
 }
 
 export const NewsCard = ({ news }: NewsCardProps) => {
     return (
-        <div className="block cursor-pointer hover:shadow-md transition-shadow duration-200">
-            <div className="flex bg-gray-100 p-4 mb-4 rounded">
-                <div className="flex-1">
-                    <span className="text-red-700 uppercase font-medium text-sm">{news.category}</span>
-                    <p className="text-sm font-medium">{news.title}</p>
-                    <p className="text-xs text-gray-700 mt-1">{news.author}</p>
-                </div>
-                <div className="w-20 h-20 ml-2">
-                    <img src={news.image || "/placeholder.svg"} alt={news.title} className="w-full h-full object-cover rounded" />
+        <div className="relative bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+            <img
+                src={news.image || "/placeholder.svg"}
+                alt={news.title}
+                className="w-full h-40 object-cover"
+            />
+            <div className="p-4">
+                <span className="text-red-600 uppercase text-xs font-bold tracking-wide">{news.category}</span>
+                <h3 className="text-lg font-semibold mt-1 text-gray-900 line-clamp-2">{news.title}</h3>
+                <p className="text-gray-600 text-sm mt-2 line-clamp-3">{news.subtitle}</p>
+                <div className="flex items-center justify-between mt-4 text-gray-500 text-xs">
+                    <p className="font-medium">Por {news.author}</p>
+                    <p>{news.description}</p>
                 </div>
             </div>
         </div>
-    )
-}
-
+    );
+};

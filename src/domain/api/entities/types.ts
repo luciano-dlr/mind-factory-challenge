@@ -1,6 +1,6 @@
 export interface News {
     id: number;
-    created_at: Date;
+    created_at: string;
     title: string;
     subtitle: string;
     image: string;
