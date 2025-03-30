@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useGetNews from "../../../domain/services/getNews/useGetNews";
+import GetNewsService from "../../../domain/services/getNews/GetNews";
 import { useNewsStore } from "../../zustand/NewsStore";
 
 const useGetAllNews = () => {
@@ -7,23 +7,25 @@ const useGetAllNews = () => {
     const [error, setError] = useState<string | null>(null);
     const { news, setNews } = useNewsStore();
 
-    const service = new useGetNews();
+    const service = new GetNewsService();
+
+
+    const fetchNews = async () => {
+        try {
+            setIsLoading(true);
+            setError(null);
+            const response = await service.getAllNews();
+            setNews(response);
+        } catch (error: any) {
+            const errorMessage =
+                error.response?.data?.message || "Ha ocurrido un error.";
+            setError(errorMessage);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                setIsLoading(true);
-                setError(null);
-                const response = await service.getAllNews();
-                setNews(response);
-            } catch (error: any) {
-                const errorMessage =
-                    error.response?.data?.message || "Ha ocurrido un error.";
-                setError(errorMessage);
-            } finally {
-                setIsLoading(false);
-            }
-        };
         fetchNews();
     }, [setNews]);
 
@@ -31,6 +33,7 @@ const useGetAllNews = () => {
         dataNews: news,
         isLoadingGetNews: isLoading,
         errorGetNews: error,
+        refetch: fetchNews
     };
 };
 

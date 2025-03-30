@@ -9,7 +9,7 @@ export interface UpdateNews {
     author: string;
     category: string;
 }
-
+// TODO - change name class
 export default class PatchNewsService {
     async updateNews(newNews: UpdateNews, id: number) {
         const response = await axios.patch(

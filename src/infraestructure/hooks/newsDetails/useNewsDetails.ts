@@ -14,9 +14,7 @@ const useNewsDetails = (id: number) => {
             try {
                 setIsLoading(true);
                 setError(null);
-
                 const foundNews = getNewsById(id);
-
                 if (!foundNews) {
                     throw new Error("Noticia no encontrada");
                 }

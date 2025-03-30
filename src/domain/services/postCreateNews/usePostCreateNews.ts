@@ -1,16 +1,8 @@
 import axios from "axios";
-
-export interface NewNews {
-    title: string;
-    subtitle: string;
-    image: string;
-    description: string;
-    author: string;
-    category: string;
-}
-
-export default class usePostCreateNews {
-    async postNews(createdNews: NewNews) {
+import { NewData } from "../../../infraestructure/components/FormPreview/FormPreview";
+//TODO - change name service class
+export default class PostCreateNews {
+    async postNews(createdNews: NewData) {
         const response = await axios.post(
             `${import.meta.env.VITE_API_URL}/News`,
             createdNews,

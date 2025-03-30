@@ -1,17 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { HomePage } from "../pages/home/HomePage";
 import { NewsDetailsPage } from "../pages/newsDetails/NewsDetailsPage";
-import { Layout } from "../layout/Layout";
+import { CreateNewsPage } from "../pages/createNews/CreateNewsPage";
+import { EditNewsPage } from "../pages/EditNews/EditNewsPage";
+
 
 export const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<HomePage />} />
-                    <Route path="/news/details/:id" element={<NewsDetailsPage />} />
-                </Route>
+                <Route index element={<HomePage />} />
+                <Route path="/news/details/:id" element={<NewsDetailsPage />} />
+                <Route path="/news/create" element={<CreateNewsPage />} />
+                <Route path="/news/edit/:id" element={<EditNewsPage />} />
             </Routes>
-        </BrowserRouter>
+        </BrowserRouter >
     );
 };
