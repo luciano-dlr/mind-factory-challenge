@@ -2,11 +2,11 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import 'swiper/swiper-bundle.css';
 import { CommonDataForm } from "../CommonDataForm/CommonDataForm";
 import { NewDescriptionForm } from "../NewDescriptionForm/NewDescriptionForm";
-import { CustomModal } from "../CustomModal/CustomModal";
 import { useFormPreviewController } from "./useFormPreviewController";
 import { NewsPreview } from "../NewsPreview/NewsPreview";
 import { TwoStepStepper } from "../Steper/TwoStepsSteper";
 import { FormPreviewProps } from "./types";
+import { CustomModal } from "../CustomModal/CustomModalConfirm";
 
 
 export const FormPreview = ({ getter, setter, handlerSubmit }: FormPreviewProps) => {

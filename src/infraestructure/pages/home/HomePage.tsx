@@ -1,6 +1,9 @@
-import { NewsCard } from "../../components/NewsCard/NewsCard"
-import { SideNewsCard } from "../../components/SideNewsCard/SideNewsCard"
+import { NewsCard } from "../../components/NewsCard/NewsSingleCard"
+import { SideNewsCard } from "../../components/SideNewsCard/SideNewsSingleCard"
 import { Skeleton } from "../../components/Skeleton/Skeleton"
+
+
+
 import { Layout } from "../../layout/Layout"
 import { useHomePageController } from "./useHomePageController"
 
