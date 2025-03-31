@@ -13,13 +13,10 @@ const useDeleteNews = () => {
         try {
             setIsLoading(true);
             setError(null);
-
             const success = await service.deleteNews(id);
-
             if (!success) {
                 throw new Error("No se pudo eliminar la noticia");
             }
-
             deleteFromStore(id);
 
             return true;
@@ -34,7 +31,7 @@ const useDeleteNews = () => {
     return {
         deleteNews,
         isLoading,
-        error
+        error,
     };
 };
 

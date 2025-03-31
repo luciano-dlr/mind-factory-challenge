@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNewsStore } from "../../zustand/NewsStore";
-import { News } from "../../../domain/api/entities/types";
+import { NewData } from "../../../domain/api/entity/type";
+
 
 const useNewsDetails = (id: number) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const { news, getNewsById } = useNewsStore();
 
-    const [currentNews, setCurrentNews] = useState<News | null>(null);
+    const [currentNews, setCurrentNews] = useState<NewData | null>(null);
 
     useEffect(() => {
         const fetchNewsDetails = () => {
@@ -18,7 +19,6 @@ const useNewsDetails = (id: number) => {
                 if (!foundNews) {
                     throw new Error("Noticia no encontrada");
                 }
-
                 setCurrentNews(foundNews);
             } catch (err) {
                 setError(err instanceof Error ? err.message : "Error desconocido");

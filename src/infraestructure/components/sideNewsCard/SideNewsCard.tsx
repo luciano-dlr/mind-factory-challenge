@@ -1,12 +1,12 @@
-import type { News } from "../../../domain/api/entities/types"
+import { NewData } from "../../../domain/api/entity/type"
 
 interface SideNewsCardProps {
-    news: News
+    news: NewData
 }
 
 export const SideNewsCard = ({ news }: SideNewsCardProps) => {
     return (
-        <div className="flex items-center gap-3 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden p-2">
+        <div className="flex items-center gap-4 bg-white rounded-lg shadow-md hover:shadow-lg border border-gray-200 transition-shadow duration-300 overflow-hidden p-2">
             <img src={news.image || "/placeholder.svg"} alt={news.title} className="w-24 h-24 object-cover rounded" />
             <div className="flex-1">
                 <span className="text-red-600 uppercase text-xs font-bold tracking-wide">{news.category}</span>

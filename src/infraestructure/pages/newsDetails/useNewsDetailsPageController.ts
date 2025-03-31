@@ -2,27 +2,38 @@ import { useParams, useNavigate } from "react-router";
 import useNewsDetails from "../../hooks/newsDetails/useNewsDetails";
 import { useState } from "react";
 import useDeleteNews from "../../hooks/deleteNews/useDeleteNews";
+import { useNewsStore } from "../../zustand/NewsStore";
+import { Bounce, toast } from "react-toastify";
 
 export const useNewsDetailsPageController = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const newsId = id ? parseInt(id) : 0;
     const { news, isLoading, error } = useNewsDetails(newsId);
-    const { deleteNews, isLoading: isDeleting, error: deleteError } = useDeleteNews();
+    const { deleteNews } = useDeleteNews();
     const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const [showEditModal, setShowEditModal] = useState(false);
+    const { deleteNews: deleteFromStore } = useNewsStore();
 
     const handleDeleteClick = () => {
         setShowConfirmModal(true);
-    };
-    const handleEditClick = () => {
-        setShowEditModal(true);
     };
 
     const handleConfirmDelete = async () => {
         setShowConfirmModal(false);
         const success = await deleteNews(newsId);
         if (success) {
+            deleteFromStore(newsId);
+            toast.success('Noticia Eliminada!', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             navigate("/")
         } else {
             throw new Error("No se pudo eliminar la noticia");
@@ -35,16 +46,13 @@ export const useNewsDetailsPageController = () => {
 
     return {
         news,
-        isLoading: isLoading || isDeleting,
-        error: error || deleteError,
+        isLoading,
+        error,
         newsId,
         showConfirmModal,
-        handleDeleteClick,
         handleConfirmDelete,
         handleCancelDelete,
-        handleEditClick,
-        showEditModal,
-        setShowEditModal,
-        showActions: !!news
+        handleDeleteClick,
+        navigate,
     };
 };

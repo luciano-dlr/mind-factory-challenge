@@ -1,15 +1,7 @@
 import axios from "axios";
+import { UpdateNews } from "./types";
 
-export interface UpdateNews {
-    id?: number;
-    title: string;
-    subtitle: string;
-    image: string;
-    description: string;
-    author: string;
-    category: string;
-}
-// TODO - change name class
+
 export default class PatchNewsService {
     async updateNews(newNews: UpdateNews, id: number) {
         const response = await axios.patch(

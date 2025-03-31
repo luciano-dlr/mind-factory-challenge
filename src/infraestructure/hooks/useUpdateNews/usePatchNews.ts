@@ -1,6 +1,7 @@
 import { useState } from "react";
-import PatchNewsService, { UpdateNews } from "../../../domain/services/updateNews/usePatchNews";
+import PatchNewsService from "../../../domain/services/updateNews/usePatchNews";
 import { useNewsStore } from "../../zustand/NewsStore";
+import { UpdateNews } from "../../../domain/services/updateNews/types";
 
 const usePatchNews = (id: number) => {
     const [data, setData] = useState<UpdateNews | null>(null);

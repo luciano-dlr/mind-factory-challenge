@@ -1,15 +1,18 @@
-import { NewsCard } from "../../components/newsCard/NewsCard"
-import { SideNewsCard } from "../../components/sideNewsCard/SideNewsCard"
+import { NewsCard } from "../../components/NewsCard/NewsCard"
+import { SideNewsCard } from "../../components/SideNewsCard/SideNewsCard"
+import { Skeleton } from "../../components/Skeleton/Skeleton"
 import { Layout } from "../../layout/Layout"
 import { useHomePageController } from "./useHomePageController"
 
 export const HomePage = () => {
-    const { dataNews, isLoadingGetNews, errorGetNews, navigate } = useHomePageController()
+
+    const { dataNews, isLoadingGetNews, errorGetNews, navigate, mainNews, sideNews, bottomNews } = useHomePageController()
+
 
     if (isLoadingGetNews)
         return (
             <Layout>
-                <h2 className="text-center text-lg font-semibold mt-6">Cargando noticias...</h2>
+                <Skeleton mainCard={true} sideCards={3} bottomCards={4} />
             </Layout>
         )
 
@@ -25,17 +28,13 @@ export const HomePage = () => {
         )
     }
 
-    const mainNews = dataNews[0]
-    const sideNews = dataNews.slice(1, 4)
-    const bottomNews = dataNews.slice(4)
-
     return (
         <Layout>
             <div className="container mx-auto px-4 my-8">
-                <div className="flex flex-col lg:flex-row gap-6 mb-8">
+                <div className="flex flex-col lg:flex-row gap-6">
 
                     <div className="lg:w-2/3">
-                        <button onClick={() => navigate(`/news/details/${mainNews.id}`)} className="text-left w-full">
+                        <button onClick={() => navigate(`/news/details/${mainNews.id}`)} className="text-left w-full h-full">
                             <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
                                 <img
                                     src={mainNews.image || "/placeholder.svg"}
@@ -44,16 +43,15 @@ export const HomePage = () => {
                                 />
                                 <div className="absolute bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6 w-full">
                                     <span className="text-red-500 uppercase font-semibold text-sm">{mainNews.category}</span>
-                                    <h2 className="text-white text-3xl font-bold mt-1">{mainNews.title}</h2>
-                                    <p className="text-gray-300 text-sm mt-1">{mainNews.subtitle}</p>
-                                    <p className="text-gray-400 text-xs mt-2">Por {mainNews.author}</p>
+                                    <h2 className="text-white text-3xl font-bold mt-1 line-clamp-2">{mainNews.title}</h2>
+                                    <p className="text-gray-300 text-sm mt-1 line-clamp-2">{mainNews.subtitle}</p>
+                                    <p className="text-gray-400 text-xs mt-2 line-clamp-2">Por {mainNews.author}</p>
                                 </div>
                             </div>
                         </button>
                     </div>
 
-
-                    <div className="lg:w-1/3 flex flex-col gap-4">
+                    <div className="lg:w-1/3 flex flex-col h-auto justify-between">
                         {sideNews.map((news) => (
                             <button key={news.id} onClick={() => navigate(`/news/details/${news.id}`)} className="text-left w-full">
                                 <SideNewsCard news={news} />

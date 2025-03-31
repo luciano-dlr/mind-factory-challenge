@@ -1,6 +1,5 @@
-export interface News {
-    id: number;
-    created_at: string;
+export interface UpdateNews {
+    id?: number;
     title: string;
     subtitle: string;
     image: string;

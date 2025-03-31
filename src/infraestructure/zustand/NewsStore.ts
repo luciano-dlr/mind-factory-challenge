@@ -1,29 +1,23 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { News } from "../../domain/api/entities/types";
+import { NewData } from "../../domain/api/entity/type";
 
 interface NewsState {
-    news: News[];
-    setNews: (news: News[]) => void;
-    addNews: (news: News) => void;
-    updateNews: (id: number, updatedNews: Partial<News>) => void
+    news: NewData[];
+    setNews: (news: NewData[]) => void;
+    updateNews: (id: number, updatedNews: Partial<NewData>) => void
     deleteNews: (id: number) => void;
-    getNewsById: (id: number) => News | undefined;
+    getNewsById: (id: number) => NewData | undefined;
 }
 
 export const useNewsStore = create<NewsState>()(
     persist(
         (set, get) => ({
             news: [],
+            setNews: (news: NewData[]) => set({ news }),
 
-            setNews: (news: News[]) => set({ news }),
-
-            addNews: (news: News) => {
-                set((state) => ({ news: [...state.news, news] }));
-            },
-
-            updateNews: (id: number, updatedNews: Partial<News>) => {
+            updateNews: (id: number, updatedNews: Partial<NewData>) => {
                 set((state) => ({
                     news: state.news.map((item) =>
                         item.id === id ? { ...item, ...updatedNews } : item

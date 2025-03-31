@@ -9,31 +9,28 @@ const useGetAllNews = () => {
 
     const service = new GetNewsService();
 
-
-    const fetchNews = async () => {
-        try {
-            setIsLoading(true);
-            setError(null);
-            const response = await service.getAllNews();
-            setNews(response);
-        } catch (error: any) {
-            const errorMessage =
-                error.response?.data?.message || "Ha ocurrido un error.";
-            setError(errorMessage);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                setIsLoading(true);
+                setError(null);
+                const response = await service.getAllNews();
+                setNews(response);
+            } catch (error: any) {
+                const errorMessage =
+                    error.response?.data?.message || "Ha ocurrido un error.";
+                setError(errorMessage);
+            } finally {
+                setIsLoading(false);
+            }
+        };
         fetchNews();
-    }, [setNews]);
+    }, []);
 
     return {
         dataNews: news,
         isLoadingGetNews: isLoading,
         errorGetNews: error,
-        refetch: fetchNews
     };
 };
 

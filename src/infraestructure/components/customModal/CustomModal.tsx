@@ -1,26 +1,17 @@
 import { useEffect } from "react";
-
-interface AlertModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    title: string;
-    message: string;
-    type?: 'confirm' | 'info' | 'success' | 'error';
-    onConfirm?: () => void;
-    confirmText?: string;
-    cancelText?: string;
-}
+import { AlertModalProps } from "./types";
 
 export const CustomModal = ({
     isOpen,
     onClose,
     title,
     message,
-    type = 'info',
+    type = 'confirm',
     onConfirm,
     confirmText = 'Confirmar',
     cancelText = 'Cancelar'
 }: AlertModalProps) => {
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -34,10 +25,8 @@ export const CustomModal = ({
 
     if (!isOpen) return null;
 
-
     const colorClasses = {
         confirm: 'bg-blue-600',
-        info: 'bg-blue-600',
         success: 'bg-green-600',
         error: 'bg-red-600'
     };
