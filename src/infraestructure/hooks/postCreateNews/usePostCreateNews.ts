@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PostCreateNews from "../../../domain/services/postCreateNews/usePostCreateNews";
 import { NewData } from "../../../domain/api/entity/type";
+import PostCreateNews from "../../../domain/services/postCreateNews/PostCreateNews";
 
 
 const postCreateNews = () => {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import postCreateNews from '../../hooks/postCreateNews/postCreateNews'
+import postCreateNews from '../../hooks/postCreateNews/usePostCreateNews'
 import { useNavigate } from 'react-router'
 import { Bounce, toast } from 'react-toastify'
 import { NewData } from '../../../domain/api/entity/type'

@@ -1,5 +1,15 @@
 import { useEffect } from "react";
-import { AlertModalProps } from "./types";
+
+interface AlertModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    title: string;
+    message: string;
+    type?: 'confirm' | 'success' | 'error';
+    onConfirm?: () => void;
+    confirmText?: string;
+    cancelText?: string;
+}
 
 export const CustomModal = ({
     isOpen,

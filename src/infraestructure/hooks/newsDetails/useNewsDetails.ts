@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNewsStore } from "../../zustand/NewsStore";
 import { NewData } from "../../../domain/api/entity/type";
 
-
 const useNewsDetails = (id: number) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
