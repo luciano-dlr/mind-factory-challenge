@@ -1,4 +1,4 @@
-import { NavBar } from "../components/navBar/NavBar";
+import { NavBar } from "../components/NavBar/NavBar";
 
 export interface LayoutProps {
     children: React.ReactNode;

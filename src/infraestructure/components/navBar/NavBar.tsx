@@ -8,7 +8,6 @@ export const NavBar = ({ onDelete }: NavBarProps) => {
     const location = useLocation();
     const isDetailsPage = location.pathname.startsWith("/news/details/");
 
-
     return (
         <nav className="bg-red-700 text-white p-4 flex justify-between items-center">
             <Link to="/" className="text-2xl font-bold">MFNews</Link>
@@ -16,12 +15,12 @@ export const NavBar = ({ onDelete }: NavBarProps) => {
                 {isDetailsPage ? (
                     <>
                         <Link to={`/news/edit/${location.pathname.split('/')[3]}`} className="bg-white text-red-700 px-4 py-2 rounded hover:bg-gray-100">
-                            Editar Noticia
+                            Editar
                         </Link>
                         <button
                             onClick={onDelete}
                             className="bg-white text-red-700 px-4 py-2 rounded hover:bg-gray-100">
-                            Eliminar Noticia
+                            Eliminar
                         </button>
                     </>
                 ) : location.pathname === '/' ? (
