@@ -15,10 +15,10 @@ export const NewsPreview = ({ basicData, description }: NewsPreviewProps) => {
             </div>
 
             <div className="mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 className=" text-2x1 sm:text-4xl overflow-hidden font-bold text-gray-900 leading-tight mb-4">
                     {basicData.title}
                 </h1>
-                <h2 className="text-xl md:text-2xl text-gray-600 font-medium">
+                <h2 className="text-xl md:text-2xl overflow-hidden text-gray-600 font-medium">
                     {basicData.subtitle}
                 </h2>
             </div>
