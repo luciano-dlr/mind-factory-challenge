@@ -1,22 +1,20 @@
 # React + TypeScript + Vite
 
-## Diagrama de flujo
+## flow chart
 ``` https://drive.google.com/file/d/1MFTEqTF1p87vq2xN06dLwCYArM6m2Sqp/view ```
 
 
-##Implementaciones
+## Implementations
 
 ``` Tailwind - axios - zustand - react router - formik - yup ```
 
-## Site 
+##  site
 
 ```https://mind-factory-challenge.vercel.app/```
 
-## up
-
+## how to run
 
 ```npm i```
-
 
 ```npm run dev```
 
