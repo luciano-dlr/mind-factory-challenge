@@ -4,7 +4,7 @@ import { TwoStepStepper } from "../../components/Steper/TwoStepsSteper";
 import { Layout } from "../../layout/Layout"
 import { useEditNewsPageController } from "./useEditNewsPageController";
 
-export const EditNewsPage = () => {
+export const EditsNewsPage = () => {
 
     const { handleSubmitEdit, isLoadingInitialData, editNewsData, setEditNewsData, errorUpdatedNews, isLoadingUpdatedNews } = useEditNewsPageController()
 
