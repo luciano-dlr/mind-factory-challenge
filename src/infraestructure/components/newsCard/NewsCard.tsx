@@ -16,8 +16,8 @@ export const NewsCard = ({ news }: NewsCardProps) => {
                 <span className="text-red-600 uppercase text-xs font-bold tracking-wide">{news.category}</span>
                 <h3 className="text-lg font-semibold mt-1 text-gray-900 line-clamp-2">{news.title}</h3>
                 <p className="text-gray-600 text-sm mt-2 line-clamp-3">{news.subtitle}</p>
-                <div className="flex items-center justify-between mt-4 text-gray-500 text-xs">
-                    <p className="line-clamp-2 m-4">{news.description}</p>
+                <div className="flex items-center justify-between  text-gray-500 text-xs">
+                    <p className="line-clamp-2">{news.description}</p>
                 </div>
             </div>
         </div>
