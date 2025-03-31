@@ -1,18 +1,7 @@
-import { Formik, Form, Field, FormikProps } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Dispatch, SetStateAction, useState } from "react";
-
-export interface FormDescriptionValues {
-    description: string;
-}
-interface DescriptionFormProps {
-    initialValues: FormDescriptionValues
-    getter?: FormDescriptionValues;
-    setter: Dispatch<SetStateAction<FormDescriptionValues>>
-    setDescriptionFormValid: Dispatch<SetStateAction<boolean>>
-
-}
-
+import { useState } from "react";
+import { DescriptionFormProps } from "./types";
 
 const validationSchema = Yup.object().shape({
     description: Yup.string().required("La descripción es obligatoria").min(25, 'Minimo 25 caracteres')

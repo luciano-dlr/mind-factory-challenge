@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from "formik";
-import { Dispatch, FC, SetStateAction, useEffect } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import * as Yup from "yup";
 
 export interface CommonDataFormValues {

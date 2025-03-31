@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { News } from "../../../domain/api/entities/types";
-import { NewData } from "../../components/FormPreview/FormPreview";
 import PostCreateNews from "../../../domain/services/postCreateNews/usePostCreateNews";
+import { NewData } from "../../components/FormPreview/types";
+import { News } from "../newsDetails/useNewsDetails";
 
 const postCreateNews = () => {
     const [data, setData] = useState<News>();
@@ -19,7 +19,6 @@ const postCreateNews = () => {
             if (!response) {
                 throw new Error("No se pudo crear la noticia");
             }
-
         } catch (error: any) {
             const errorMessage =
                 error.response?.data?.message || "Ha ocurrido un error.";

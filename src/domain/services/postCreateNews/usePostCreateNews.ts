@@ -1,6 +1,6 @@
 import axios from "axios";
-import { NewData } from "../../../infraestructure/components/FormPreview/FormPreview";
-//TODO - change name service class
+import { NewData } from "../../../infraestructure/components/FormPreview/types";
+
 export default class PostCreateNews {
     async postNews(createdNews: NewData) {
         const response = await axios.post(
