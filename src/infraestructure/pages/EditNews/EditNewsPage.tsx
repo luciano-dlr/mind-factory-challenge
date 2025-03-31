@@ -1,5 +1,5 @@
 import { FormPreview } from "../../components/FormPreview/FormPreview"
-import { Skeleton } from "../../components/skeleton/Skeleton";
+import { Skeleton } from "../../components/SkeletonLoading/SkeletonLoading";
 import { TwoStepStepper } from "../../components/Steper/TwoStepsSteper";
 import { Layout } from "../../layout/Layout"
 import { useEditNewsPageController } from "./useEditNewsPageController";

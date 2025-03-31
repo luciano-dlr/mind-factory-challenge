@@ -6,7 +6,7 @@ import { EditsNewsPage } from "../pages/editNews/EditNewsPage";
 
 
 
-export const AppRouter = () => {
+export const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>

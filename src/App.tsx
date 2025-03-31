@@ -1,9 +1,9 @@
 import "./App.css";
-import { AppRouter } from "./infraestructure/routes/AppRouter";
+import { AppRoutes } from "./infraestructure/routes/AppRoutes";
 
 export const App = () => {
 
   return (
-    <AppRouter />
+    <AppRoutes />
   );
 };

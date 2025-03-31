@@ -1,7 +1,7 @@
 
 import { useNewsDetailsPageController } from "./useNewsDetailsPageController";
 import { Layout } from "../../layout/Layout";
-import { Skeleton } from "../../components/skeleton/Skeleton";
+import { Skeleton } from "../../components/SkeletonLoading/SkeletonLoading";
 import { CustomModal } from "../../components/CustomModal/CustomModalConfirm";
 
 export const NewsDetailsPage = () => {

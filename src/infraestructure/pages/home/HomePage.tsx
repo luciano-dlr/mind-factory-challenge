@@ -1,6 +1,6 @@
 import { NewsCard } from "../../components/NewsCard/NewsSingleCard"
 import { SideNewsCard } from "../../components/SideNewsCard/SideNewsSingleCard"
-import { Skeleton } from "../../components/skeleton/Skeleton"
+import { Skeleton } from "../../components/SkeletonLoading/SkeletonLoading"
 
 
 
