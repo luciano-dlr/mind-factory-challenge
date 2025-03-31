@@ -1,8 +1,8 @@
+import { EditNewsPage } from "../pages/editNews/EditNewsPage";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { HomePage } from "../pages/home/HomePage";
 import { NewsDetailsPage } from "../pages/newsDetails/NewsDetailsPage";
 import { CreateNewsPage } from "../pages/createNews/CreateNewsPage";
-import { EditNewsPage } from "../pages/editNews/EditNewsPage";
 
 
 
