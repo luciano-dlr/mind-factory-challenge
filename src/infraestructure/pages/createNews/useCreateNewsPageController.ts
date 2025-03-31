@@ -2,7 +2,7 @@ import { useState } from 'react'
 import postCreateNews from '../../hooks/postCreateNews/postCreateNews'
 import { useNavigate } from 'react-router'
 import { Bounce, toast } from 'react-toastify'
-import { NewData } from '../../components/FormPreview/types'
+import { NewData } from '../../../domain/api/entity/type'
 
 export const useCreateNewsPageController = () => {
     const { fetchCreatedNews, isLoadingCreatedNews, errorCreatedNews } = postCreateNews()

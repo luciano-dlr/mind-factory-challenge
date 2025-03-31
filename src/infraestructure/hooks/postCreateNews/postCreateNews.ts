@@ -1,10 +1,10 @@
 import { useState } from "react";
 import PostCreateNews from "../../../domain/services/postCreateNews/usePostCreateNews";
-import { NewData } from "../../components/FormPreview/types";
-import { News } from "../newsDetails/useNewsDetails";
+import { NewData } from "../../../domain/api/entity/type";
+
 
 const postCreateNews = () => {
-    const [data, setData] = useState<News>();
+    const [data, setData] = useState<NewData>();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 

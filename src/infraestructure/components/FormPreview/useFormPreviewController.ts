@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Swiper as SwiperType } from "swiper";
-import { CommonDataFormValues } from "../CommonDataForm/CommonDataForm";
-import { NewData } from "./types";
+import { NewData } from "../../../domain/api/entity/type";
+import { CommonDataFormValues } from "../CommonDataForm/types";
+
 
 export const useFormPreviewController = (
     initialData: NewData,

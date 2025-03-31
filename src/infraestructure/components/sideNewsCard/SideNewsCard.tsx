@@ -1,7 +1,7 @@
-import { News } from "../../hooks/newsDetails/useNewsDetails"
+import { NewData } from "../../../domain/api/entity/type"
 
 interface SideNewsCardProps {
-    news: News
+    news: NewData
 }
 
 export const SideNewsCard = ({ news }: SideNewsCardProps) => {

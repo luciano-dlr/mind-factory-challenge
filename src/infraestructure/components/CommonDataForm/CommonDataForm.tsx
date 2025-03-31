@@ -1,21 +1,7 @@
 import { Formik, Form, Field } from "formik";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import * as Yup from "yup";
-
-export interface CommonDataFormValues {
-    title: string;
-    subtitle: string;
-    image: string;
-    author: string;
-    category: string;
-}
-
-interface CommonDataFormProps {
-    initialValues: CommonDataFormValues
-    getter: CommonDataFormValues;
-    setter: Dispatch<SetStateAction<CommonDataFormValues>>;
-    setFormCommonValid: Dispatch<SetStateAction<boolean>>;
-}
+import { CommonDataFormProps } from "./types";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required("El título es obligatorio"),

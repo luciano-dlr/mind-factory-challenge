@@ -1,5 +1,5 @@
 import axios from "axios";
-import { NewData } from "../../../infraestructure/components/FormPreview/types";
+import { NewData } from "../../api/entity/type";
 
 export default class PostCreateNews {
     async postNews(createdNews: NewData) {

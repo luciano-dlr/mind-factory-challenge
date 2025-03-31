@@ -1,4 +1,4 @@
-import { CommonDataFormValues } from '../CommonDataForm/CommonDataForm'
+import { CommonDataFormValues } from "../CommonDataForm/types";
 
 interface NewsPreviewProps {
     basicData: CommonDataFormValues;

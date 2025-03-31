@@ -1,7 +1,7 @@
 import { CustomModal } from "../../components/CustomModal/CustomModal";
 import { useNewsDetailsPageController } from "./useNewsDetailsPageController";
 import { Layout } from "../../layout/Layout";
-import { Skeleton } from "../../components/skeleton/Skeleton";
+import { Skeleton } from "../../components/Skeleton/Skeleton";
 
 export const NewsDetailsPage = () => {
 
@@ -31,7 +31,7 @@ export const NewsDetailsPage = () => {
                         {news.category}
                     </span>
                     <span className="text-gray-500 text-sm">
-                        {new Date(news.created_at).toLocaleDateString('es-ES', {
+                        {new Date(news.created_at!).toLocaleDateString('es-ES', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric'
@@ -70,7 +70,7 @@ export const NewsDetailsPage = () => {
                 </div>
 
                 <div className="prose prose-lg max-w-none text-gray-700">
-                    {news.description.split('\n').map((paragraph, index) => (
+                    {news.description?.split('\n').map((paragraph, index) => (
                         <p key={index} className="mb-6 leading-relaxed">
                             {paragraph}
                         </p>

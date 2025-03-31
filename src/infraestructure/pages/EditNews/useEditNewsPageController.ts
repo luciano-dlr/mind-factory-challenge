@@ -3,7 +3,7 @@ import { useNewsStore } from "../../zustand/NewsStore"
 import usePatchNews from "../../hooks/useUpdateNews/usePatchNews"
 import { useEffect, useState } from "react"
 import { Bounce, toast } from "react-toastify"
-import { NewData } from "../../components/FormPreview/types"
+import { NewData } from "../../../domain/api/entity/type"
 
 export const useEditNewsPageController = () => {
     const { id } = useParams<{ id: string }>()

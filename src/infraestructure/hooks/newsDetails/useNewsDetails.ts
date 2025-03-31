@@ -1,23 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNewsStore } from "../../zustand/NewsStore";
+import { NewData } from "../../../domain/api/entity/type";
 
-export interface News {
-    id: number;
-    created_at: string;
-    title: string;
-    subtitle: string;
-    image: string;
-    description: string;
-    author: string;
-    category: string;
-}
 
 const useNewsDetails = (id: number) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const { news, getNewsById } = useNewsStore();
 
-    const [currentNews, setCurrentNews] = useState<News | null>(null);
+    const [currentNews, setCurrentNews] = useState<NewData | null>(null);
 
     useEffect(() => {
         const fetchNewsDetails = () => {
